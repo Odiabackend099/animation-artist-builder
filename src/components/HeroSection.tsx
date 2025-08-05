@@ -1,80 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Mic } from "lucide-react";
+import { NetworkBackground3D } from "@/components/3d/NetworkBackground3D";
 
 const HeroSection = () => {
   return (
     <section className="min-h-screen bg-gradient-hero relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Advanced 3D Network Background */}
+      <div className="absolute inset-0 opacity-80">
+        <NetworkBackground3D />
+      </div>
+
+      {/* Additional ambient effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-glow rounded-full blur-3xl animate-glow-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-glow rounded-full blur-3xl animate-glow-pulse delay-1000"></div>
-      </div>
-
-      {/* 3D Network visualization */}
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full">
-        <div className="relative w-full h-full flex items-center justify-center">
-          {/* Main network nodes */}
-          <div className="relative w-96 h-96">
-            {/* Central hub */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-brand-primary rounded-lg shadow-glow animate-float">
-              <div className="w-full h-full bg-gradient-primary rounded-lg flex items-center justify-center">
-                <div className="w-8 h-8 bg-white rounded opacity-80"></div>
-              </div>
-            </div>
-            
-            {/* Surrounding nodes */}
-            {[...Array(12)].map((_, i) => {
-              const angle = (i * 30) * (Math.PI / 180);
-              const radius = 120;
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius;
-              
-              return (
-                <div
-                  key={i}
-                  className="absolute w-8 h-8 bg-surface-secondary border border-brand-primary/30 rounded"
-                  style={{
-                    left: `calc(50% + ${x}px - 16px)`,
-                    top: `calc(50% + ${y}px - 16px)`,
-                    animationDelay: `${i * 100}ms`
-                  }}
-                >
-                  {/* Connection lines */}
-                  <div 
-                    className="absolute w-px bg-gradient-to-b from-brand-primary/60 to-transparent"
-                    style={{
-                      height: `${radius}px`,
-                      left: '50%',
-                      top: '50%',
-                      transformOrigin: 'top',
-                      transform: `rotate(${-angle}rad) translateX(-50%)`
-                    }}
-                  ></div>
-                </div>
-              );
-            })}
-            
-            {/* Outer ring nodes */}
-            {[...Array(8)].map((_, i) => {
-              const angle = (i * 45) * (Math.PI / 180);
-              const radius = 180;
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius;
-              
-              return (
-                <div
-                  key={`outer-${i}`}
-                  className="absolute w-6 h-6 bg-brand-secondary/20 rounded animate-float"
-                  style={{
-                    left: `calc(50% + ${x}px - 12px)`,
-                    top: `calc(50% + ${y}px - 12px)`,
-                    animationDelay: `${i * 200 + 1000}ms`
-                  }}
-                ></div>
-              );
-            })}
-          </div>
-        </div>
       </div>
 
       <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">

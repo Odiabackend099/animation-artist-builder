@@ -1,58 +1,12 @@
 import { Button } from "@/components/ui/button";
+import { Globe3D } from "@/components/3d/Globe3D";
 
 const InfrastructureSection = () => {
   return (
     <section className="py-32 bg-background relative overflow-hidden">
-      {/* Background globe */}
-      <div className="absolute right-1/4 top-1/2 transform -translate-y-1/2">
-        <div className="relative w-[500px] h-[500px]">
-          {/* Globe wireframe */}
-          <div className="absolute inset-0 rounded-full border border-brand-primary/20 animate-spin-slow">
-            {/* Horizontal lines */}
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={`h-${i}`}
-                className="absolute w-full border-b border-brand-primary/10"
-                style={{
-                  top: `${(i + 1) * 12.5}%`,
-                  height: '1px'
-                }}
-              ></div>
-            ))}
-            
-            {/* Vertical lines */}
-            {[...Array(12)].map((_, i) => (
-              <div
-                key={`v-${i}`}
-                className="absolute h-full border-r border-brand-primary/10"
-                style={{
-                  left: `${(i + 1) * 8.33}%`,
-                  width: '1px'
-                }}
-              ></div>
-            ))}
-          </div>
-          
-          {/* Animated dots representing global presence */}
-          {[...Array(20)].map((_, i) => {
-            const angle = Math.random() * 360;
-            const distance = 180 + Math.random() * 60;
-            const x = Math.cos(angle * Math.PI / 180) * distance;
-            const y = Math.sin(angle * Math.PI / 180) * distance;
-            
-            return (
-              <div
-                key={`dot-${i}`}
-                className="absolute w-3 h-3 bg-brand-primary rounded-full animate-glow-pulse"
-                style={{
-                  left: `calc(50% + ${x}px - 6px)`,
-                  top: `calc(50% + ${y}px - 6px)`,
-                  animationDelay: `${i * 100}ms`
-                }}
-              ></div>
-            );
-          })}
-        </div>
+      {/* Advanced 3D Globe Background */}
+      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full opacity-60">
+        <Globe3D />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
