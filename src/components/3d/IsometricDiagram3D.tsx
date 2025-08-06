@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Text3D, Center } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface IsometricBoxProps {
@@ -62,19 +62,17 @@ const IsometricBox: React.FC<IsometricBoxProps> = ({
           />
         </mesh>
         
+        {/* Simplified step indicator without Text3D */}
         {step && (
-          <group ref={labelRef} position={[0, size[1] + 0.5, 0]}>
-            <Center>
-              <Text3D
-                font="/fonts/helvetiker_regular.typeface.json"
-                size={0.2}
-                height={0.02}
-                curveSegments={12}
-              >
-                {`STEP ${step}`}
-                <meshBasicMaterial color="hsl(193, 100%, 70%)" />
-              </Text3D>
-            </Center>
+          <group ref={labelRef} position={[0, size[1] + 0.8, 0]}>
+            <mesh>
+              <sphereGeometry args={[0.1, 8, 8]} />
+              <meshBasicMaterial 
+                color="hsl(193, 100%, 70%)"
+                transparent
+                opacity={0.9}
+              />
+            </mesh>
           </group>
         )}
       </group>

@@ -108,11 +108,13 @@ const ConnectionLines: React.FC = () => {
           const geometry = new THREE.BufferGeometry().setFromPoints(points);
           
           return (
-            <primitive key={`${startIndex}-${endIndex}`} object={new THREE.Line(geometry, new THREE.LineBasicMaterial({
-              color: new THREE.Color("hsl(193, 100%, 70%)"),
-              transparent: true,
-              opacity: 0.3
-            }))} />
+            <lineSegments key={`${startIndex}-${endIndex}`} geometry={geometry}>
+              <lineBasicMaterial
+                color="hsl(193, 100%, 70%)"
+                transparent
+                opacity={0.3}
+              />
+            </lineSegments>
           );
         })
       )}
