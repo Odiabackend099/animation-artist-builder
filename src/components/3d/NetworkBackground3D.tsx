@@ -8,7 +8,7 @@ interface ParticleFieldProps {
   radius?: number;
 }
 
-const ParticleField: React.FC<ParticleFieldProps> = ({ count = 2000, radius = 10 }) => {
+const ParticleField: React.FC<ParticleFieldProps> = ({ count = 1500, radius = 8 }) => {
   const ref = useRef<THREE.Points>(null);
   
   const particlesPosition = useMemo(() => {
@@ -40,12 +40,11 @@ const ParticleField: React.FC<ParticleFieldProps> = ({ count = 2000, radius = 10
     <Points ref={ref} positions={particlesPosition} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="hsl(193, 100%, 70%)"
+        color="#60A5FA"
         size={0.002}
         sizeAttenuation={true}
         depthWrite={false}
         opacity={0.8}
-        blending={THREE.AdditiveBlending}
       />
     </Points>
   );
@@ -71,8 +70,8 @@ const NetworkNode: React.FC<{ position: [number, number, number]; scale?: number
       <mesh ref={meshRef} position={position} scale={scale}>
         <sphereGeometry args={[0.05, 16, 16]} />
         <meshStandardMaterial
-          color="hsl(193, 100%, 70%)"
-          emissive="hsl(193, 100%, 70%)"
+          color="#60A5FA"
+          emissive="#60A5FA"
           emissiveIntensity={0.5}
           transparent
           opacity={0.9}
@@ -97,27 +96,6 @@ const ConnectionLines: React.FC = () => {
       {nodes.map((nodePos, index) => (
         <NetworkNode key={index} position={nodePos} />
       ))}
-      
-      {/* Connection lines between nodes */}
-      {nodes.map((start, startIndex) => 
-        nodes.slice(startIndex + 1).map((end, endIndex) => {
-          const points = [
-            new THREE.Vector3(...start),
-            new THREE.Vector3(...end)
-          ];
-          const geometry = new THREE.BufferGeometry().setFromPoints(points);
-          
-          return (
-            <lineSegments key={`${startIndex}-${endIndex}`} geometry={geometry}>
-              <lineBasicMaterial
-                color="hsl(193, 100%, 70%)"
-                transparent
-                opacity={0.3}
-              />
-            </lineSegments>
-          );
-        })
-      )}
     </group>
   );
 };
@@ -130,7 +108,7 @@ export const NetworkBackground3D: React.FC = () => {
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} color="hsl(193, 100%, 70%)" intensity={0.5} />
+        <pointLight position={[10, 10, 10]} color="#60A5FA" intensity={0.5} />
         
         <ParticleField count={1500} radius={8} />
         <ConnectionLines />
@@ -138,7 +116,7 @@ export const NetworkBackground3D: React.FC = () => {
         {/* Ambient glow effect */}
         <Sphere args={[15]} position={[0, 0, 0]}>
           <meshBasicMaterial
-            color="hsl(193, 100%, 70%)"
+            color="#60A5FA"
             transparent
             opacity={0.02}
             side={THREE.BackSide}

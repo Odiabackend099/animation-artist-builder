@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Globe3D } from "@/components/3d/Globe3D";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const InfrastructureSection = () => {
   return (
     <section className="py-32 bg-background relative overflow-hidden">
       {/* Advanced 3D Globe Background */}
       <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full opacity-60">
-        <Globe3D />
+        <ErrorBoundary>
+          <Globe3D />
+        </ErrorBoundary>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

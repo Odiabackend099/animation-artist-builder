@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { PhoneInterface3D } from "@/components/3d/PhoneInterface3D";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const VoiceAISection = () => {
   return (
@@ -71,7 +72,9 @@ const VoiceAISection = () => {
 
           {/* Right side - Advanced 3D Phone interface */}
           <div className="relative h-96">
-            <PhoneInterface3D />
+            <ErrorBoundary>
+              <PhoneInterface3D />
+            </ErrorBoundary>
           </div>
         </div>
       </div>

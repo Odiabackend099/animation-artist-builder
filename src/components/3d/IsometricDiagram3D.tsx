@@ -7,7 +7,6 @@ interface IsometricBoxProps {
   position: [number, number, number];
   size: [number, number, number];
   color: string;
-  label?: string;
   step?: number;
 }
 
@@ -15,11 +14,10 @@ const IsometricBox: React.FC<IsometricBoxProps> = ({
   position, 
   size, 
   color, 
-  label, 
   step 
 }) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  const labelRef = useRef<THREE.Group>(null);
+  const indicatorRef = useRef<THREE.Group>(null);
   
   useFrame((state) => {
     if (meshRef.current) {
@@ -32,8 +30,8 @@ const IsometricBox: React.FC<IsometricBoxProps> = ({
       }
     }
     
-    if (labelRef.current && step) {
-      labelRef.current.position.y = position[1] + size[1] + 0.5 + Math.sin(state.clock.elapsedTime * 2) * 0.1;
+    if (indicatorRef.current && step) {
+      indicatorRef.current.position.y = position[1] + size[1] + 0.8 + Math.sin(state.clock.elapsedTime * 2) * 0.1;
     }
   });
 
@@ -55,20 +53,20 @@ const IsometricBox: React.FC<IsometricBoxProps> = ({
         <mesh>
           <boxGeometry args={[size[0] + 0.02, size[1] + 0.02, size[2] + 0.02]} />
           <meshBasicMaterial
-            color="hsl(193, 100%, 70%)"
+            color="#60A5FA"
             wireframe
             transparent
             opacity={0.4}
           />
         </mesh>
         
-        {/* Simplified step indicator without Text3D */}
+        {/* Simplified step indicator */}
         {step && (
-          <group ref={labelRef} position={[0, size[1] + 0.8, 0]}>
+          <group ref={indicatorRef} position={[0, size[1] + 0.8, 0]}>
             <mesh>
               <sphereGeometry args={[0.1, 8, 8]} />
               <meshBasicMaterial 
-                color="hsl(193, 100%, 70%)"
+                color="#60A5FA"
                 transparent
                 opacity={0.9}
               />
@@ -77,47 +75,6 @@ const IsometricBox: React.FC<IsometricBoxProps> = ({
         )}
       </group>
     </Float>
-  );
-};
-
-const ConnectionPath: React.FC<{ 
-  start: [number, number, number]; 
-  end: [number, number, number];
-  delay?: number;
-}> = ({ start, end, delay = 0 }) => {
-  const lineRef = useRef<THREE.Line>(null);
-  
-  useFrame((state) => {
-    if (lineRef.current) {
-      const material = lineRef.current.material as THREE.LineBasicMaterial;
-      const pulse = Math.sin(state.clock.elapsedTime * 2 + delay) * 0.5 + 0.5;
-      material.opacity = 0.3 + pulse * 0.4;
-    }
-  });
-
-  const points = useMemo(() => [
-    new THREE.Vector3(...start),
-    new THREE.Vector3(
-      (start[0] + end[0]) / 2,
-      Math.max(start[1], end[1]) + 1,
-      (start[2] + end[2]) / 2
-    ),
-    new THREE.Vector3(...end)
-  ], [start, end]);
-
-  const curve = useMemo(() => new THREE.CatmullRomCurve3(points), [points]);
-  const geometry = useMemo(() => new THREE.TubeGeometry(curve, 20, 0.02, 8, false), [curve]);
-
-  return (
-    <mesh geometry={geometry}>
-      <meshStandardMaterial
-        color="hsl(193, 100%, 70%)"
-        transparent
-        opacity={0.6}
-        emissive="hsl(193, 100%, 70%)"
-        emissiveIntensity={0.2}
-      />
-    </mesh>
   );
 };
 
@@ -146,8 +103,8 @@ const DataFlow: React.FC<{ path: [number, number, number][] }> = ({ path }) => {
     <mesh ref={particleRef}>
       <sphereGeometry args={[0.05, 8, 8]} />
       <meshStandardMaterial
-        color="hsl(280, 100%, 70%)"
-        emissive="hsl(280, 100%, 70%)"
+        color="#A855F7"
+        emissive="#A855F7"
         emissiveIntensity={0.5}
       />
     </mesh>
@@ -159,37 +116,27 @@ export const IsometricDiagram3D: React.FC = () => {
     {
       position: [-2, 0, 1] as [number, number, number],
       size: [0.8, 1.2, 0.4] as [number, number, number],
-      color: "hsl(220, 30%, 25%)",
-      label: "CLIENT",
+      color: "#334155",
       step: 1
     },
     {
       position: [0, 1, 0] as [number, number, number],
       size: [1, 0.6, 0.8] as [number, number, number],
-      color: "hsl(193, 100%, 50%)",
-      label: "CLOUD",
+      color: "#0EA5E9",
       step: 2
     },
     {
       position: [2, 0.5, -1] as [number, number, number],
       size: [0.9, 0.9, 0.6] as [number, number, number],
-      color: "hsl(193, 100%, 60%)",
-      label: "AGENT",
+      color: "#3B82F6",
       step: 3
     },
     {
       position: [1, -1, 1.5] as [number, number, number],
       size: [0.6, 0.8, 0.3] as [number, number, number],
-      color: "hsl(220, 30%, 25%)",
-      label: "USER",
+      color: "#334155",
       step: 4
     }
-  ], []);
-
-  const connectionPaths = useMemo(() => [
-    { start: [-2, 0, 1] as [number, number, number], end: [0, 1, 0] as [number, number, number], delay: 0 },
-    { start: [0, 1, 0] as [number, number, number], end: [2, 0.5, -1] as [number, number, number], delay: 1 },
-    { start: [2, 0.5, -1] as [number, number, number], end: [1, -1, 1.5] as [number, number, number], delay: 2 }
   ], []);
 
   const dataFlowPath = useMemo(() => [
@@ -209,13 +156,13 @@ export const IsometricDiagram3D: React.FC = () => {
         <directionalLight 
           position={[5, 5, 5]} 
           intensity={0.6} 
-          color="hsl(193, 100%, 70%)"
+          color="#60A5FA"
           castShadow
         />
         <pointLight 
           position={[-5, 5, -5]} 
           intensity={0.3} 
-          color="hsl(280, 100%, 70%)" 
+          color="#A855F7" 
         />
         
         {/* Scene elements */}
@@ -225,18 +172,7 @@ export const IsometricDiagram3D: React.FC = () => {
             position={element.position}
             size={element.size}
             color={element.color}
-            label={element.label}
             step={element.step}
-          />
-        ))}
-        
-        {/* Connection paths */}
-        {connectionPaths.map((path, index) => (
-          <ConnectionPath
-            key={index}
-            start={path.start}
-            end={path.end}
-            delay={path.delay}
           />
         ))}
         
@@ -247,7 +183,7 @@ export const IsometricDiagram3D: React.FC = () => {
         <mesh position={[0, -2, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[10, 10]} />
           <meshBasicMaterial
-            color="hsl(220, 30%, 8%)"
+            color="#1E293B"
             transparent
             opacity={0.1}
           />

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { FileText, Github } from "lucide-react";
 import { IsometricDiagram3D } from "@/components/3d/IsometricDiagram3D";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const HowItWorksSection = () => {
   return (
@@ -89,7 +90,9 @@ const HowItWorksSection = () => {
 
           {/* Right side - Advanced 3D Isometric diagram */}
           <div className="relative h-96">
-            <IsometricDiagram3D />
+            <ErrorBoundary>
+              <IsometricDiagram3D />
+            </ErrorBoundary>
           </div>
         </div>
       </div>

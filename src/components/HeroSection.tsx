@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Mic } from "lucide-react";
 import { NetworkBackground3D } from "@/components/3d/NetworkBackground3D";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const HeroSection = () => {
   return (
     <section className="min-h-screen bg-gradient-hero relative overflow-hidden">
       {/* Advanced 3D Network Background */}
       <div className="absolute inset-0 opacity-80">
-        <NetworkBackground3D />
+        <ErrorBoundary>
+          <NetworkBackground3D />
+        </ErrorBoundary>
       </div>
 
       {/* Additional ambient effects */}

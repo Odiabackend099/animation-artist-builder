@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, Float, useTexture } from '@react-three/drei';
+import { Sphere, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 const GlobeWireframe: React.FC = () => {
@@ -12,12 +12,6 @@ const GlobeWireframe: React.FC = () => {
       groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
     }
   });
-
-  // Create wireframe geometry
-  const wireframeGeometry = useMemo(() => {
-    const geometry = new THREE.SphereGeometry(3, 32, 16);
-    return new THREE.WireframeGeometry(geometry);
-  }, []);
 
   // Create data points on the globe
   const dataPoints = useMemo(() => {
@@ -38,18 +32,20 @@ const GlobeWireframe: React.FC = () => {
   return (
     <group ref={groupRef}>
       {/* Main wireframe globe */}
-      <lineSegments geometry={wireframeGeometry}>
-        <lineBasicMaterial 
-          color="hsl(193, 100%, 70%)" 
+      <mesh>
+        <sphereGeometry args={[3, 32, 16]} />
+        <meshBasicMaterial 
+          color="#60A5FA" 
           transparent 
           opacity={0.3}
+          wireframe
         />
-      </lineSegments>
+      </mesh>
       
       {/* Inner glow */}
       <Sphere args={[2.8]}>
         <meshBasicMaterial
-          color="hsl(193, 100%, 70%)"
+          color="#60A5FA"
           transparent
           opacity={0.05}
           side={THREE.BackSide}
@@ -62,7 +58,7 @@ const GlobeWireframe: React.FC = () => {
           <mesh position={position}>
             <sphereGeometry args={[0.03, 8, 8]} />
             <meshBasicMaterial
-              color="hsl(193, 100%, 70%)"
+              color="#60A5FA"
               transparent
               opacity={0.8}
             />
@@ -94,7 +90,7 @@ const PulseRing: React.FC<{ radius: number; delay: number }> = ({ radius, delay 
     <mesh ref={ringRef}>
       <ringGeometry args={[radius, radius + 0.1, 32]} />
       <meshBasicMaterial
-        color="hsl(193, 100%, 70%)"
+        color="#60A5FA"
         transparent
         opacity={0.3}
         side={THREE.DoubleSide}
@@ -111,7 +107,7 @@ export const Globe3D: React.FC = () => {
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.2} />
-        <pointLight position={[10, 10, 10]} color="hsl(193, 100%, 70%)" intensity={0.5} />
+        <pointLight position={[10, 10, 10]} color="#60A5FA" intensity={0.5} />
         
         <GlobeWireframe />
         
@@ -128,7 +124,7 @@ export const Globe3D: React.FC = () => {
               >
                 <sphereGeometry args={[0.01, 4, 4]} />
                 <meshBasicMaterial
-                  color="hsl(193, 100%, 70%)"
+                  color="#60A5FA"
                   transparent
                   opacity={0.4}
                 />
