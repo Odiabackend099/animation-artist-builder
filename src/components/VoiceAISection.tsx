@@ -10,13 +10,13 @@ const VoiceAISection = () => {
             {/* Tab navigation */}
             <div className="flex space-x-8 mb-12">
               <button className="text-brand-primary font-semibold pb-2 border-b-2 border-brand-primary">
-                VOICE AI
+                TESTIMONIALS
               </button>
               <button className="text-text-muted font-semibold pb-2">
-                ROBOTICS
+                
               </button>
               <button className="text-text-muted font-semibold pb-2">
-                LIVESTREAMING
+                
               </button>
             </div>
 
@@ -34,29 +34,21 @@ const VoiceAISection = () => {
             </div>
 
             <h2 className="text-2xl font-semibold text-text-primary mb-6">
-              LiveKit Cloud powers ChatGPT's Advanced Voice Mode for millions of users around the world, every day.
+              Nigerian Businesses Love ODIA
             </h2>
 
             <div className="space-y-4 mb-8">
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 rounded-full bg-surface-tertiary flex items-center justify-center">
-                  <div className="w-3 h-3 rounded-full bg-brand-primary"></div>
-                </div>
-                <span className="text-text-secondary">Run millions of concurrent calls</span>
+              <div className="p-4 bg-surface-tertiary border border-border rounded">
+                <p className="text-text-primary">“My customers now get instant responses at 2 AM. Sales up 40% in one month.”</p>
+                <p className="text-text-muted text-sm mt-2">— Kemi A., Fashion Store Owner, Lagos</p>
               </div>
-              
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 rounded-full bg-surface-tertiary flex items-center justify-center">
-                  <div className="w-3 h-3 rounded-full bg-brand-primary"></div>
-                </div>
-                <span className="text-text-secondary">Automatic turn detection and interruption handling</span>
+              <div className="p-4 bg-surface-tertiary border border-border rounded">
+                <p className="text-text-primary">“Agent ODIA tells me exactly what my customers want. It's like having a business consultant 24/7.”</p>
+                <p className="text-text-muted text-sm mt-2">— Chidi O., Restaurant Owner, Abuja</p>
               </div>
-              
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 rounded-full bg-surface-tertiary flex items-center justify-center">
-                  <div className="w-3 h-3 rounded-full bg-brand-primary"></div>
-                </div>
-                <span className="text-text-secondary">Self-host or deploy agents to LiveKit Cloud</span>
+              <div className="p-4 bg-surface-tertiary border border-border rounded">
+                <p className="text-text-primary">“We handle 500+ customer messages daily with zero staff. ODIA paid for itself in 3 days.”</p>
+                <p className="text-text-muted text-sm mt-2">— Fatima B., Pharmacy Chain, Port Harcourt</p>
               </div>
             </div>
 
@@ -64,7 +56,7 @@ const VoiceAISection = () => {
               variant="outline" 
               className="border-border text-text-primary hover:bg-surface-tertiary"
             >
-              Contact sales
+              Start Free Trial
             </Button>
           </div>
 
@@ -99,8 +91,8 @@ const VoiceAISection = () => {
 
                     {/* AI Info */}
                     <div className="text-center mb-8">
-                      <h3 className="text-xl font-semibold text-text-primary mb-2">Vale</h3>
-                      <p className="text-text-secondary">Bright and inquisitive</p>
+                      <h3 className="text-xl font-semibold text-text-primary mb-2">Lexi</h3>
+                      <p className="text-text-secondary">Your 24/7 customer agent</p>
                       
                       {/* Status dots */}
                       <div className="flex justify-center space-x-2 mt-4">
@@ -116,11 +108,11 @@ const VoiceAISection = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <Button 
-                      className="w-full bg-white text-black hover:bg-gray-100 rounded-full py-4 text-lg font-semibold"
-                    >
-                      Start a new chat
-                    </Button>
+            <Button 
+              className="w-full bg-white text-black hover:bg-gray-100 rounded-full py-4 text-lg font-semibold"
+            >
+              Start Free Trial
+            </Button>
                   </div>
                 </div>
 

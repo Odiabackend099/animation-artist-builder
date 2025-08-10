@@ -10,22 +10,22 @@ const Footer = () => {
           {/* Left side - Company info */}
           <div>
             <div className="text-2xl font-bold text-text-primary mb-6">
-              LiveKit
+              ODIA
             </div>
             <p className="text-text-secondary mb-8 max-w-md">
-              Build, deploy, and scale realtime agents.
+              Agent Lexi serves your customers. Agent ODIA reports to you.
               <br />
-              Open source. Enterprise grade.
+              Two AI staff working 24/7 for your business.
             </p>
             
             <Button 
               className="bg-brand-primary hover:bg-brand-primary/90 text-background mb-8"
             >
-              Start building
+              Start Free Trial
             </Button>
             
             <p className="text-text-muted text-sm">
-              No credit card required • 50GB free monthly
+              No credit card required • Setup in 3 minutes
             </p>
 
             {/* Social links */}
@@ -106,7 +106,7 @@ const Footer = () => {
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
             <div className="mb-4 md:mb-0">
-              © 2025 LiveKit. Engineered and designed worldwide. All rights reserved.
+              © 2025 ODIA. Engineered and designed worldwide. All rights reserved.
             </div>
             <div className="flex space-x-6">
               <a href="#" className="hover:text-text-secondary transition-colors">Terms of Service</a>

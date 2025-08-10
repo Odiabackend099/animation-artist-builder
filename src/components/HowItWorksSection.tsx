@@ -9,7 +9,7 @@ const HowItWorksSection = () => {
           {/* Left content */}
           <div>
             <h2 className="text-4xl font-bold text-brand-primary mb-12">
-              How it works
+              Running in 3 Minutes
             </h2>
 
             <div className="space-y-8">
@@ -20,10 +20,10 @@ const HowItWorksSection = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-text-primary mb-2">
-                    User speaks to agent via app, browser, or phone call
+                    Connect Your WhatsApp Business
                   </h3>
                   <p className="text-text-secondary">
-                    Voice data is captured via LiveKit SDK on any major platform, or SIP trunk.
+                    Link your business number. Keep your existing number.
                   </p>
                 </div>
               </div>
@@ -35,8 +35,9 @@ const HowItWorksSection = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-text-primary mb-2">
-                    User speech is streamed from device to agent via LiveKit Cloud
+                    Train Your AI Team
                   </h3>
+                  <p className="text-text-secondary">Tell them about your business. They learn instantly.</p>
                 </div>
               </div>
 
@@ -47,20 +48,9 @@ const HowItWorksSection = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-text-primary mb-2">
-                    Agent receives user speech and runs your custom business logic
+                    Go Live Immediately
                   </h3>
-                </div>
-              </div>
-
-              {/* Step 4 */}
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 rounded-full bg-brand-primary text-background flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">
-                  4
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-text-primary mb-2">
-                    Agent generates and streams speech back to user via LiveKit Cloud
-                  </h3>
+                  <p className="text-text-secondary">Customers talk to Lexi. You get insights from Agent ODIA.</p>
                 </div>
               </div>
             </div>
@@ -71,17 +61,14 @@ const HowItWorksSection = () => {
                 variant="outline" 
                 className="border-border text-text-primary hover:bg-surface-tertiary"
               >
-                <FileText className="w-4 h-4 mr-2" />
-                View documentation
+                Start Free 3-Day Trial
               </Button>
               
               <Button 
                 variant="ghost" 
                 className="text-text-secondary hover:text-text-primary"
               >
-                <Github className="w-4 h-4 mr-2" />
-                livekit/agents
-                <span className="ml-2 text-xs bg-surface-tertiary px-2 py-1 rounded">6.8K</span>
+                See How It Works
               </Button>
             </div>
           </div>
@@ -96,7 +83,7 @@ const HowItWorksSection = () => {
                   <div className="w-full h-full bg-surface-tertiary border border-brand-primary/30 rounded-lg relative">
                     <div className="absolute top-4 left-4 right-4 h-16 bg-gradient-primary rounded opacity-80"></div>
                     <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-xs text-text-muted">
-                      CLIENT DEVICE
+                      WHATSAPP BUSINESS
                     </div>
                   </div>
                   {/* Step 1 label */}
@@ -110,7 +97,7 @@ const HowItWorksSection = () => {
                   <div className="w-full h-full bg-surface-tertiary border border-brand-primary/30 rounded-lg relative">
                     <div className="absolute inset-2 bg-brand-primary/20 rounded flex items-center justify-center">
                       <div className="text-xs text-text-primary font-semibold text-center">
-                        LIVEKIT<br />CLOUD
+                        ODIA<br />CLOUD
                       </div>
                     </div>
                   </div>
@@ -124,7 +111,7 @@ const HowItWorksSection = () => {
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-36 h-36 rotate-y-12 rotate-x-12">
                   <div className="w-full h-full bg-surface-tertiary border border-brand-primary/30 rounded-lg relative">
                     <div className="absolute inset-2 bg-gradient-primary rounded flex items-center justify-center">
-                      <div className="text-xs text-background font-semibold">AGENT</div>
+                      <div className="text-xs text-background font-semibold">LEXI</div>
                     </div>
                   </div>
                   {/* Step 3 label */}
@@ -138,7 +125,7 @@ const HowItWorksSection = () => {
                   <div className="w-full h-full bg-surface-tertiary border border-brand-primary/30 rounded-lg relative">
                     <div className="absolute top-2 left-2 right-2 h-8 bg-text-muted rounded-full"></div>
                     <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-xs text-text-muted">
-                      USER
+                      BUSINESS OWNER
                     </div>
                   </div>
                   {/* Step 4 label */}

@@ -9,7 +9,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center space-x-8">
             <div className="text-2xl font-bold text-text-primary">
-              LiveKit
+              ODIA
             </div>
             
             {/* Navigation Links */}
@@ -46,12 +46,12 @@ const Navigation = () => {
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-2 text-text-secondary">
               <Github className="w-4 h-4" />
-              <span className="text-sm">livekit / agents</span>
-              <span className="text-xs bg-surface-tertiary px-2 py-1 rounded">6.8k</span>
+              <span className="text-sm">odia / dev</span>
+              <span className="text-xs bg-surface-tertiary px-2 py-1 rounded">500+</span>
             </div>
             
             <Button variant="default" className="bg-brand-primary hover:bg-brand-primary/90 text-background">
-              Start building
+              Start Free 3-Day Trial
             </Button>
           </div>
         </div>

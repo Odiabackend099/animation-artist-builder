@@ -80,18 +80,17 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
         <div className="max-w-2xl">
           <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-8 animate-fade-in-up">
-            <span className="text-text-primary">The all-in-one</span>
+            <span className="text-text-primary">Your Business Needs</span>
             <br />
-            <span className="bg-gradient-primary bg-clip-text text-transparent">Voice AI</span>
-            <span className="text-text-primary"> platform</span>
+            <span className="bg-gradient-primary bg-clip-text text-transparent">Two AI Staff Members</span>
           </h1>
           
           <div className="space-y-4 mb-12 animate-fade-in-up delay-200">
             <p className="text-xl text-text-secondary">
-              Build, deploy, and scale realtime agents.
+              Agent Lexi handles your customers. Agent ODIA reports to you.
             </p>
             <p className="text-xl text-text-secondary">
-              Open source. Enterprise grade.
+              Both work 24/7.
             </p>
           </div>
 
@@ -100,7 +99,7 @@ const HeroSection = () => {
               size="lg" 
               className="bg-surface-tertiary hover:bg-surface-secondary text-text-primary border border-border text-lg px-8 py-4 h-auto"
             >
-              Start building
+              Start Free 3-Day Trial
             </Button>
             
             <Button 
@@ -109,7 +108,7 @@ const HeroSection = () => {
               className="text-text-secondary hover:text-text-primary text-lg px-8 py-4 h-auto"
             >
               <Mic className="w-5 h-5 mr-2" />
-              Talk to LiveKit
+              See How It Works
             </Button>
           </div>
 
@@ -119,21 +118,21 @@ const HeroSection = () => {
               <div className="w-6 h-6 rounded-full bg-brand-primary/20 border border-brand-primary flex items-center justify-center">
                 <div className="w-2 h-2 rounded-full bg-brand-primary"></div>
               </div>
-              <span className="text-text-secondary">Open source voice agent framework</span>
+              <span className="text-text-secondary">Trusted by 500+ Nigerian businesses</span>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="w-6 h-6 rounded-full bg-brand-primary/20 border border-brand-primary flex items-center justify-center">
                 <div className="w-2 h-2 rounded-full bg-brand-primary"></div>
               </div>
-              <span className="text-text-secondary">Ultra low-latency edge infrastructure</span>
+              <span className="text-text-secondary">₦0 setup fee</span>
             </div>
             
             <div className="flex items-center space-x-4">
               <div className="w-6 h-6 rounded-full bg-brand-primary/20 border border-brand-primary flex items-center justify-center">
                 <div className="w-2 h-2 rounded-full bg-brand-primary"></div>
               </div>
-              <span className="text-text-secondary">SOTA Voice AI tools and research</span>
+              <span className="text-text-secondary">Cancel anytime</span>
             </div>
           </div>
         </div>

@@ -59,77 +59,63 @@ const InfrastructureSection = () => {
         <div className="max-w-2xl">
           <div className="mb-8">
             <p className="text-sm font-semibold text-brand-primary uppercase tracking-wider mb-4">
-              BUILT FOR SCALE
+              THE PROBLEM
             </p>
             <h2 className="text-5xl font-bold text-text-primary mb-6">
-              <span className="text-brand-primary">Enterprise</span> grade
-              <br />
-              infrastructure
+              Nigerian Businesses Lose ₦2M Monthly to Poor Customer Service
             </h2>
           </div>
 
-          {/* Compliance badges */}
-          <div className="flex items-center space-x-6 mb-12">
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full border border-text-muted flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-text-muted"></div>
-              </div>
-              <span className="text-text-secondary">GDPR</span>
+          {/* Problem cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="p-6 bg-surface-tertiary border border-border rounded-lg">
+              <h4 className="text-lg font-semibold text-text-primary mb-2">Missed WhatsApp Messages</h4>
+              <p className="text-text-secondary">Customers message at midnight. You're asleep. Sale lost.</p>
             </div>
-            
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full border border-text-muted flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-text-muted"></div>
-              </div>
-              <span className="text-text-secondary">HIPAA</span>
+            <div className="p-6 bg-surface-tertiary border border-border rounded-lg">
+              <h4 className="text-lg font-semibold text-text-primary mb-2">No Business Intelligence</h4>
+              <p className="text-text-secondary">You don't know what customers really want until it's too late.</p>
             </div>
-            
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full border border-text-muted flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-text-muted"></div>
-              </div>
-              <span className="text-text-secondary">SOC 2 Type 2</span>
+            <div className="p-6 bg-surface-tertiary border border-border rounded-lg">
+              <h4 className="text-lg font-semibold text-text-primary mb-2">Can't Scale Support</h4>
+              <p className="text-text-secondary">Hiring more staff is expensive. Training takes forever.</p>
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-8 mb-16">
-            <div>
-              <div className="text-4xl font-bold text-text-primary mb-2">99.99%</div>
-              <div className="text-text-muted uppercase text-sm tracking-wider">UPTIME</div>
-            </div>
-            
-            <div>
-              <div className="text-4xl font-bold text-text-primary mb-2">100ms</div>
-              <div className="text-text-muted uppercase text-sm tracking-wider">GLOBAL LATENCY</div>
-            </div>
-            
-            <div>
-              <div className="text-4xl font-bold text-text-primary mb-2">3 billion</div>
-              <div className="text-text-muted uppercase text-sm tracking-wider">CALLS ANNUALLY</div>
-            </div>
-            
-            <div>
-              <div className="text-4xl font-bold text-text-primary mb-2">100K+</div>
-              <div className="text-text-muted uppercase text-sm tracking-wider">DEVELOPERS</div>
-            </div>
-          </div>
-
-          {/* Customer section */}
+          {/* Solution */}
           <div className="mb-8">
             <p className="text-sm font-semibold text-brand-primary uppercase tracking-wider mb-4">
-              CHOSEN BY INNOVATORS
+              THE SOLUTION
             </p>
-            <h3 className="text-3xl font-bold text-text-primary mb-8">
-              From <span className="text-brand-primary">startups</span> to <span className="text-brand-primary">industry giants</span>
-            </h3>
+            <h3 className="text-3xl font-bold text-text-primary mb-6">Meet Your AI Team</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h4 className="text-2xl font-semibold text-text-primary mb-4">Agent Lexi (Customer-Facing)</h4>
+              <ul className="space-y-3 text-text-secondary">
+                <li>• Responds to every WhatsApp message instantly</li>
+                <li>• Speaks perfect Nigerian English and Pidgin</li>
+                <li>• Handles pricing, orders, complaints 24/7</li>
+                <li>• Never loses patience, never takes breaks</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-2xl font-semibold text-text-primary mb-4">Agent ODIA (Owner-Facing)</h4>
+              <ul className="space-y-3 text-text-secondary">
+                <li>• Monitors all customer conversations</li>
+                <li>• Alerts you to opportunities and problems</li>
+                <li>• Tracks revenue and customer patterns</li>
+                <li>• Your personal business intelligence assistant</li>
+              </ul>
+            </div>
           </div>
 
           <Button 
             variant="outline" 
             className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-background"
           >
-            View all customers
+            Start Free Trial
           </Button>
         </div>
       </div>
