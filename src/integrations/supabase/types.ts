@@ -122,6 +122,87 @@ export type Database = {
         }
         Relationships: []
       }
+      events: {
+        Row: {
+          created_at: string | null
+          detail: Json | null
+          id: number
+          lead_id: string | null
+          type: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          detail?: Json | null
+          id?: number
+          lead_id?: string | null
+          type?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          detail?: Json | null
+          id?: number
+          lead_id?: string | null
+          type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "events_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "v_lead_status"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      leads: {
+        Row: {
+          business_name: string | null
+          created_at: string | null
+          email: string
+          id: string
+          industry: string | null
+          intent: string | null
+          language: string | null
+          name: string
+          source: string | null
+          telegram: string | null
+          whatsapp: string
+        }
+        Insert: {
+          business_name?: string | null
+          created_at?: string | null
+          email: string
+          id?: string
+          industry?: string | null
+          intent?: string | null
+          language?: string | null
+          name: string
+          source?: string | null
+          telegram?: string | null
+          whatsapp: string
+        }
+        Update: {
+          business_name?: string | null
+          created_at?: string | null
+          email?: string
+          id?: string
+          industry?: string | null
+          intent?: string | null
+          language?: string | null
+          name?: string
+          source?: string | null
+          telegram?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       lessons: {
         Row: {
           course_id: string
@@ -233,6 +314,60 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      provisioning_jobs: {
+        Row: {
+          agent_slug: string | null
+          agent_template_id: string
+          created_at: string | null
+          delivery_summary: Json | null
+          id: string
+          last_error: string | null
+          lead_id: string | null
+          priority: number | null
+          retries: number | null
+          status: string | null
+        }
+        Insert: {
+          agent_slug?: string | null
+          agent_template_id: string
+          created_at?: string | null
+          delivery_summary?: Json | null
+          id?: string
+          last_error?: string | null
+          lead_id?: string | null
+          priority?: number | null
+          retries?: number | null
+          status?: string | null
+        }
+        Update: {
+          agent_slug?: string | null
+          agent_template_id?: string
+          created_at?: string | null
+          delivery_summary?: Json | null
+          id?: string
+          last_error?: string | null
+          lead_id?: string | null
+          priority?: number | null
+          retries?: number | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "provisioning_jobs_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "provisioning_jobs_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "v_lead_status"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       purchases: {
         Row: {
@@ -404,6 +539,57 @@ export type Database = {
           },
         ]
       }
+      usage_tracking: {
+        Row: {
+          agent_slug: string | null
+          created_at: string | null
+          direction: string | null
+          expires_at: string | null
+          id: number
+          lead_id: string | null
+          msg_cost_ngn: number | null
+          remaining: number | null
+          tokens: number | null
+        }
+        Insert: {
+          agent_slug?: string | null
+          created_at?: string | null
+          direction?: string | null
+          expires_at?: string | null
+          id?: number
+          lead_id?: string | null
+          msg_cost_ngn?: number | null
+          remaining?: number | null
+          tokens?: number | null
+        }
+        Update: {
+          agent_slug?: string | null
+          created_at?: string | null
+          direction?: string | null
+          expires_at?: string | null
+          id?: number
+          lead_id?: string | null
+          msg_cost_ngn?: number | null
+          remaining?: number | null
+          tokens?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "usage_tracking_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "usage_tracking_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "v_lead_status"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_feedback: {
         Row: {
           created_at: string
@@ -523,7 +709,25 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      v_lead_status: {
+        Row: {
+          agent_slug: string | null
+          business_name: string | null
+          created_at: string | null
+          delivery_summary: Json | null
+          email: string | null
+          id: string | null
+          industry: string | null
+          intent: string | null
+          language: string | null
+          name: string | null
+          source: string | null
+          status: string | null
+          telegram: string | null
+          whatsapp: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       increment_user_api_usage: {

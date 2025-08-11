@@ -127,7 +127,29 @@ const Signup = () => {
     setLoading(true);
     try {
       await saveTraining();
-      toast({ title: "AI Team Launched", description: "Redirecting to dashboard..." });
+
+      // Submit lead to backend for provisioning via Edge Function
+      const { data: { user } } = await supabase.auth.getUser();
+      const email = user?.email || "";
+      const payload = {
+        name: yourName || email.split("@")[0],
+        email,
+        whatsapp: whatsAppNumber,
+        business_name: companyName,
+        industry: businessType || "Other",
+        intent: "Sales & Support on WhatsApp",
+        language: "en-NG",
+        telegram: "",
+      };
+
+      const { error } = await supabase.functions.invoke("submit-lead", { body: payload });
+      if (error) {
+        console.error("submit-lead error", error);
+        toast({ title: "Submitted with warnings", description: "We saved your setup but couldn't contact our provisioning service. We'll retry shortly." });
+      } else {
+        toast({ title: "AI Team Launched", description: "Provisioning started. Redirecting to dashboard..." });
+      }
+
       navigate("/dashboard");
     } catch (e: any) {
       toast({ title: "Error", description: e.message });

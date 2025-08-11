@@ -1,15 +1,37 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/components/ui/use-toast";
-
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 const Dashboard = () => {
+  const [status, setStatus] = useState<string | null>(null);
+  const [agentSlug, setAgentSlug] = useState<string | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      const email = user?.email;
+      if (!email) return;
+      const { data, error } = await supabase.functions.invoke('lead-status', { body: { email } });
+      if (!mounted) return;
+      if (error) {
+        console.error('lead-status error', error);
+      } else if (data) {
+        setStatus((data as any).status ?? null);
+        setAgentSlug((data as any).agent_slug ?? null);
+      }
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   const quick = [
     { label: "View Conversations" },
     { label: "Update AI Training" },
     { label: "Download Report" },
     { label: "Upgrade Plan" },
   ];
-
   return (
     <main className="min-h-screen bg-background pt-28 pb-16 px-6">
       <div className="container mx-auto">
@@ -33,6 +55,19 @@ const Dashboard = () => {
             </Card>
           ))}
         </div>
+        <Card className="border-border bg-surface-primary mb-10">
+          <CardHeader>
+            <CardTitle className="text-text-primary">Agent Status</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-text-secondary">
+              Status: <span className="text-text-primary font-medium">{status ?? '—'}</span>
+            </div>
+            <div className="text-text-secondary">
+              Agent Slug: <span className="text-text-primary font-medium">{agentSlug ?? '—'}</span>
+            </div>
+          </CardContent>
+        </Card>
 
         <Card className="border-border bg-surface-primary mb-10">
           <CardHeader>
