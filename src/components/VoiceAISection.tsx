@@ -11,15 +11,9 @@ const VoiceAISection = () => {
           <div>
             {/* Tab navigation */}
             <div className="flex space-x-8 mb-12">
-              <button className="text-brand-primary font-semibold pb-2 border-b-2 border-brand-primary">
+              <span className="text-brand-primary font-semibold pb-2 border-b-2 border-brand-primary">
                 TESTIMONIALS
-              </button>
-              <button className="text-text-muted font-semibold pb-2">
-                
-              </button>
-              <button className="text-text-muted font-semibold pb-2">
-                
-              </button>
+              </span>
             </div>
 
             {/* Brand icons */}
