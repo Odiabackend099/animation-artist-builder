@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 const Dashboard = () => {
   const [status, setStatus] = useState<string | null>(null);
   const [agentSlug, setAgentSlug] = useState<string | null>(null);
+  const [delivery, setDelivery] = useState<any | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -19,6 +20,7 @@ const Dashboard = () => {
       } else if (data) {
         setStatus((data as any).status ?? null);
         setAgentSlug((data as any).agent_slug ?? null);
+        setDelivery((data as any).delivery_summary ?? null);
       }
     });
     return () => {
@@ -32,6 +34,26 @@ const Dashboard = () => {
     { label: "Download Report" },
     { label: "Upgrade Plan" },
   ];
+
+  const handleWhatsAppTest = () => {
+    if (!agentSlug) return toast({ title: 'Missing agent', description: 'Agent slug not available yet.' });
+    const link = `https://wa.me/2348105786326?text=${encodeURIComponent('hi agent ' + agentSlug)}`;
+    window.open(link, '_blank');
+  };
+
+  const handleResendEmail = async () => {
+    try {
+      const { data: userData } = await supabase.auth.getUser();
+      const email = userData.user?.email;
+      if (!email) return toast({ title: 'Not signed in', description: 'Please sign in again.' });
+      // Placeholder: edge function/API not implemented yet
+      // await supabase.functions.invoke('resend-ready', { body: { email, agent_slug: agentSlug } });
+      toast({ title: 'Email queued', description: 'We will resend your setup email shortly.' });
+    } catch (e: any) {
+      toast({ title: 'Failed to resend', description: e.message });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-background pt-28 pb-16 px-6">
       <div className="container mx-auto">
@@ -65,6 +87,15 @@ const Dashboard = () => {
             </div>
             <div className="text-text-secondary">
               Agent Slug: <span className="text-text-primary font-medium">{agentSlug ?? '—'}</span>
+            </div>
+            {delivery && (
+              <div className="text-text-secondary mt-2">
+                Delivery: <span className="text-text-primary font-medium">{delivery?.whatsapp_status ?? '—'}</span>
+              </div>
+            )}
+            <div className="flex gap-3 mt-4">
+              <Button variant="outline" className="border-border" onClick={handleWhatsAppTest}>Test on WhatsApp</Button>
+              <Button onClick={handleResendEmail} className="bg-brand-primary hover:bg-brand-primary/90 text-background">Resend Email</Button>
             </div>
           </CardContent>
         </Card>
