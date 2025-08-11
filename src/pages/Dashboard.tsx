@@ -46,8 +46,8 @@ const Dashboard = () => {
       const { data: userData } = await supabase.auth.getUser();
       const email = userData.user?.email;
       if (!email) return toast({ title: 'Not signed in', description: 'Please sign in again.' });
-      // Placeholder: edge function/API not implemented yet
-      // await supabase.functions.invoke('resend-ready', { body: { email, agent_slug: agentSlug } });
+      const { error } = await supabase.functions.invoke('resend-ready', { body: { email, agent_slug: agentSlug } });
+      if (error) throw error;
       toast({ title: 'Email queued', description: 'We will resend your setup email shortly.' });
     } catch (e: any) {
       toast({ title: 'Failed to resend', description: e.message });

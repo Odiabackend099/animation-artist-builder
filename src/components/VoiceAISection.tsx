@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { NAV } from "@/lib/nav";
 
 const VoiceAISection = () => {
   const navigate = useNavigate();
@@ -107,7 +108,7 @@ const VoiceAISection = () => {
                     {/* CTA Button */}
             <Button 
               className="w-full bg-white text-black hover:bg-gray-100 rounded-full py-4 text-lg font-semibold"
-              onClick={() => navigate('/auth')}
+              onClick={() => navigate(NAV.routes.auth)}
             >
               Start Free Trial
             </Button>

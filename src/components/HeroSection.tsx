@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Mic } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { NAV } from "@/lib/nav";
+import avatar1 from "@/assets/avatars/naija-1.jpg";
+import avatar2 from "@/assets/avatars/naija-2.jpg";
+import avatar3 from "@/assets/avatars/naija-3.jpg";
 
 const HeroSection = () => {
   const navigate = useNavigate();
   return (
-    <section className="min-h-screen bg-gradient-hero relative overflow-hidden">
+    <section id="hero" className="min-h-screen bg-gradient-hero relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-glow rounded-full blur-3xl animate-glow-pulse"></div>
@@ -100,7 +104,7 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               className="bg-surface-tertiary hover:bg-surface-secondary text-text-primary border border-border text-lg px-8 py-4 h-auto"
-              onClick={() => navigate('/auth')}
+              onClick={() => navigate(NAV.routes.auth)}
             >
               Start Free 3-Day Trial
             </Button>
@@ -138,6 +142,13 @@ const HeroSection = () => {
               </div>
               <span className="text-text-secondary">Cancel anytime</span>
             </div>
+          </div>
+
+          <div className="flex items-center gap-3 mt-10">
+            <img src={avatar1} alt="Kemi from Lagos using ODIA" className="w-10 h-10 rounded-full border border-border" loading="lazy" />
+            <img src={avatar2} alt="Chidi from Abuja using ODIA" className="w-10 h-10 rounded-full border border-border -ml-3" loading="lazy" />
+            <img src={avatar3} alt="Fatima from Port Harcourt using ODIA" className="w-10 h-10 rounded-full border border-border -ml-3" loading="lazy" />
+            <span className="text-text-muted text-sm">Imagine GPT‑5 serving your customers on WhatsApp.</span>
           </div>
         </div>
       </div>

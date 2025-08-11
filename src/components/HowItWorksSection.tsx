@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { FileText, Github } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { NAV } from "@/lib/nav";
 
 const HowItWorksSection = () => {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ const HowItWorksSection = () => {
               <Button 
                 variant="outline" 
                 className="border-border text-text-primary hover:bg-surface-tertiary"
-                onClick={() => navigate('/auth')}
+                onClick={() => navigate(NAV.routes.auth)}
               >
                 Start Free 3-Day Trial
               </Button>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { NAV } from "@/lib/nav";
 
 const PricingSection = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const PricingSection = () => {
               <li>• WhatsApp integration</li>
               <li>• Basic analytics</li>
             </ul>
-            <Button className="w-full bg-brand-primary hover:bg-brand-primary/90 text-background" onClick={() => navigate('/auth?plan=starter')}>Start Free Trial</Button>
+            <Button className="w-full bg-brand-primary hover:bg-brand-primary/90 text-background" onClick={() => navigate(`${NAV.routes.auth}?plan=starter`)}>Start Free Trial</Button>
             <p className="text-xs text-text-muted mt-3">Add Agent ODIA to Starter: +₦10,000/month</p>
           </div>
 
@@ -39,7 +40,7 @@ const PricingSection = () => {
               <li>• Priority support</li>
               <li>• Revenue tracking</li>
             </ul>
-            <Button className="w-full bg-brand-primary hover:bg-brand-primary/90 text-background" onClick={() => navigate('/auth?plan=business')}>Start Free Trial</Button>
+            <Button className="w-full bg-brand-primary hover:bg-brand-primary/90 text-background" onClick={() => navigate(`${NAV.routes.auth}?plan=business`)}>Start Free Trial</Button>
           </div>
 
           {/* Enterprise */}
@@ -54,7 +55,7 @@ const PricingSection = () => {
               <li>• Dedicated success manager</li>
               <li>• Custom integrations</li>
             </ul>
-            <Button variant="outline" className="w-full border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-background" onClick={() => window.open('https://wa.me/2348105786326?text=Hello%20ODIA%20Sales%2C%20I%27d%20like%20to%20discuss%20the%20Enterprise%20plan.', '_blank')}>Contact Sales</Button>
+            <Button variant="outline" className="w-full border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-background" onClick={() => window.open(NAV.external.contactSales, '_blank')}>Contact Sales</Button>
           </div>
         </div>
       </div>
