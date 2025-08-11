@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const VoiceAISection = () => {
+  const navigate = useNavigate();
   return (
-    <section className="py-32 bg-background">
+    <section id="testimonials" className="py-32 bg-background">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
@@ -55,6 +57,7 @@ const VoiceAISection = () => {
             <Button 
               variant="outline" 
               className="border-border text-text-primary hover:bg-surface-tertiary"
+              onClick={() => navigate('/auth')}
             >
               Start Free Trial
             </Button>
@@ -110,6 +113,7 @@ const VoiceAISection = () => {
                     {/* CTA Button */}
             <Button 
               className="w-full bg-white text-black hover:bg-gray-100 rounded-full py-4 text-lg font-semibold"
+              onClick={() => navigate('/auth')}
             >
               Start Free Trial
             </Button>

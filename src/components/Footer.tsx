@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Github, Twitter } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <footer className="bg-surface-primary border-t border-border">
       <div className="container mx-auto px-6 py-16">
@@ -20,6 +22,7 @@ const Footer = () => {
             
             <Button 
               className="bg-brand-primary hover:bg-brand-primary/90 text-background mb-8"
+              onClick={() => navigate('/auth')}
             >
               Start Free Trial
             </Button>

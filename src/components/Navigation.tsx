@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
+  const navigate = useNavigate();
   return (
     <nav className="w-full border-b border-border bg-background/80 backdrop-blur-sm fixed top-0 z-50">
       <div className="container mx-auto px-6 py-4">
@@ -32,11 +34,11 @@ const Navigation = () => {
                 </button>
               </div>
               
-              <a href="#" className="text-text-secondary hover:text-text-primary transition-colors">
+              <a href="#testimonials" className="text-text-secondary hover:text-text-primary transition-colors">
                 Customers
               </a>
               
-              <a href="#" className="text-text-secondary hover:text-text-primary transition-colors">
+              <a href="#pricing" className="text-text-secondary hover:text-text-primary transition-colors">
                 Pricing
               </a>
             </div>
@@ -50,7 +52,7 @@ const Navigation = () => {
               <span className="text-xs bg-surface-tertiary px-2 py-1 rounded">500+</span>
             </div>
             
-            <Button variant="default" className="bg-brand-primary hover:bg-brand-primary/90 text-background">
+            <Button variant="default" className="bg-brand-primary hover:bg-brand-primary/90 text-background" onClick={() => navigate('/auth')}>
               Start Free 3-Day Trial
             </Button>
           </div>

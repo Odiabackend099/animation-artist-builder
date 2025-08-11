@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Mic } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="min-h-screen bg-gradient-hero relative overflow-hidden">
       {/* Animated background elements */}
@@ -98,6 +100,7 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               className="bg-surface-tertiary hover:bg-surface-secondary text-text-primary border border-border text-lg px-8 py-4 h-auto"
+              onClick={() => navigate('/auth')}
             >
               Start Free 3-Day Trial
             </Button>
@@ -106,6 +109,7 @@ const HeroSection = () => {
               variant="ghost" 
               size="lg"
               className="text-text-secondary hover:text-text-primary text-lg px-8 py-4 h-auto"
+              onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Mic className="w-5 h-5 mr-2" />
               See How It Works

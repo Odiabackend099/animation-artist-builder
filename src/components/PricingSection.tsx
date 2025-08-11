@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const PricingSection = () => {
+  const navigate = useNavigate();
   return (
-    <section className="py-32 bg-background">
+    <section id="pricing" className="py-32 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-text-primary">Simple Nigerian Pricing</h2>
@@ -20,7 +22,7 @@ const PricingSection = () => {
               <li>• WhatsApp integration</li>
               <li>• Basic analytics</li>
             </ul>
-            <Button className="w-full bg-brand-primary hover:bg-brand-primary/90 text-background">Start Free Trial</Button>
+            <Button className="w-full bg-brand-primary hover:bg-brand-primary/90 text-background" onClick={() => navigate('/auth?plan=starter')}>Start Free Trial</Button>
             <p className="text-xs text-text-muted mt-3">Add Agent ODIA to Starter: +₦10,000/month</p>
           </div>
 
@@ -37,7 +39,7 @@ const PricingSection = () => {
               <li>• Priority support</li>
               <li>• Revenue tracking</li>
             </ul>
-            <Button className="w-full bg-brand-primary hover:bg-brand-primary/90 text-background">Start Free Trial</Button>
+            <Button className="w-full bg-brand-primary hover:bg-brand-primary/90 text-background" onClick={() => navigate('/auth?plan=business')}>Start Free Trial</Button>
           </div>
 
           {/* Enterprise */}
@@ -52,7 +54,7 @@ const PricingSection = () => {
               <li>• Dedicated success manager</li>
               <li>• Custom integrations</li>
             </ul>
-            <Button variant="outline" className="w-full border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-background">Contact Sales</Button>
+            <Button variant="outline" className="w-full border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-background" onClick={() => window.open('https://wa.me/2348105786326?text=Hello%20ODIA%20Sales%2C%20I%27d%20like%20to%20discuss%20the%20Enterprise%20plan.', '_blank')}>Contact Sales</Button>
           </div>
         </div>
       </div>

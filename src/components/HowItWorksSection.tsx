@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { FileText, Github } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HowItWorksSection = () => {
+  const navigate = useNavigate();
   return (
-    <section className="py-32 bg-surface-secondary">
+    <section id="how-it-works" className="py-32 bg-surface-secondary">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
@@ -60,6 +62,7 @@ const HowItWorksSection = () => {
               <Button 
                 variant="outline" 
                 className="border-border text-text-primary hover:bg-surface-tertiary"
+                onClick={() => navigate('/auth')}
               >
                 Start Free 3-Day Trial
               </Button>
@@ -67,6 +70,7 @@ const HowItWorksSection = () => {
               <Button 
                 variant="ghost" 
                 className="text-text-secondary hover:text-text-primary"
+                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 See How It Works
               </Button>

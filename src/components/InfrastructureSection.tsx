@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const InfrastructureSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-32 bg-background relative overflow-hidden">
       {/* Background globe */}
@@ -114,6 +116,7 @@ const InfrastructureSection = () => {
           <Button 
             variant="outline" 
             className="border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-background"
+            onClick={() => navigate('/auth')}
           >
             Start Free Trial
           </Button>
