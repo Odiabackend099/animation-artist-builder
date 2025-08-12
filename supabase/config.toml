@@ -1,1 +1,7 @@
 project_id = "tbesbwjsflwjtmjdcobo"
+
+[functions.lead-status]
+verify_jwt = true
+
+[functions.resend-ready]
+verify_jwt = true
